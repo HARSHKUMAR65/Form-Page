@@ -15,39 +15,87 @@
                 <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     width="30%" alt="">
             </div>
-            <h1>Login</h1>
-            <form action="" id="form">
-                <label for="name">Email</label>
-                <input type="text" id="email" placeholder="Enter your email like gHl5X@example.com">
-                <label for="name">Password</label>
-                <input type="password" id="password" placeholder="Enter your password like 12345678">
-                <button type="submit" id="submit">Submit</button>
-            </form>
+            <div class="btns">
+                <button id="login" class=login onclick=login()>Login</button>
+                <button id="register" class="register" onclick=register()>Register</button>
+            </div>
+            <div class="LoginForm" id="loginForm">
+                <h1>Login</h1>
+                <form action="" id="form">
+                    <label for="name">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email like gHl5X@example.com">
+                    <label for="name">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password like 12345678">
+                    <button type="submit" id="LoginSubmit">Login</button>
+                </form>
+            </div>
+            <div class="RegisterForm" id="registerForm">
+                <h1>Register</h1>
+                <form action="" id="form">
+                    <label for="name">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email like abc@example.com">
+                    <label for="name">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password like !2Dedewewd">
+                    <button type="submit" id="RegisterSubmit">Sinup</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
 <script>
-    const form = document.querySelector('#form');
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-    const submit = document.querySelector('#submit');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^.{8,}$/;
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (email.value === '' || password.value === '') {
-            alert('please enter email and password');
-            return;
-        }
-        if (emailRegex.test(email.value) && passwordRegex.test(password.value)) {
-            alert(`Validation Success for email ${email.value} and password  ${password.value}`);
-        } else {
-            alert('Validation Failed');
-            return;
-        }
-    })
-    submit.addEventListener('click', (e) => {
-        form.dispatchEvent('submit');
+
+    function login() {
+        document.querySelector('.LoginForm').style.display = 'block';
+        document.querySelector('.RegisterForm').style.display = 'none';
+    }
+    function register() {
+        document.querySelector('.LoginForm').style.display = 'none';
+        document.querySelector('.RegisterForm').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginSubmit = document.getElementById('LoginSubmit');
+        const registerSubmit = document.getElementById('RegisterSubmit');
+        const emailre = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordre = /^.{8,}$/;
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const loginEmail = document.getElementById('email').value;
+            const loginPassword = document.getElementById('password').value;
+            if (loginEmail == '' && loginPassword == '') {
+                alert('Please enter email and password to login');
+                return
+            }
+            if (emailre.test(loginEmail) && passwordre.test(loginPassword)) {
+                alert(`Login ScucessFull ${loginEmail} and ${loginPassword}`);
+                return
+            } else {
+                alert('please enter valid email and password to login');
+                return
+            }
+        })
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const registerEmail = document.getElementById('email').value;
+            const registerPassword = document.getElementById('password').value;
+            if(registerEmail == '' && registerPassword == ''){
+                alert('please enter email and password to register');
+                return
+            }
+            if(emailre.test(registerEmail) && passwordre.test(registerPassword)){
+                alert(`registeration sucessfull ${registerEmail} and ${registerPassword}`);
+                registerEmail = '';
+                registerPassword = '';
+                return
+            }else{
+                alert('please enter vaild email and pasword to register');
+                loginEmail.value = '';
+                loginPassword.value = '';
+                return
+            }
+        })
     })
 </script>
 
