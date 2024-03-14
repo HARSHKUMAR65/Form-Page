@@ -1,0 +1,65 @@
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.card {
+    padding: 20px;
+    height: 400px;
+    width: 600px;
+    justify-self: center;
+    align-self: center;
+    margin: 0 auto;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 96%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px; 
+}
+
+input:focus {
+    outline: none;
+    border-color: orange; 
+    box-shadow: 0 0 5px orange; 
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.logo img {
+    border-radius: 50%;
+    max-width: 100px; 
+}
+
+form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+form button {
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: orange;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+form button:hover {
+    background-color: #ff7f00; 
+}
+form button:focus {
+    outline: none; 
+}
