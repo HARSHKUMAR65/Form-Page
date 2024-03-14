@@ -39,7 +39,7 @@
             alert('please enter email and password');
             return;
         }
-        if (!emailRegex.test(email.value) || !passwordRegex.test(password.value)) {
+        if (emailRegex.test(email.value) && passwordRegex.test(password.value)) {
             alert(`Validation Success for email ${email.value} and password  ${password.value}`);
         } else {
             alert('Validation Failed');
